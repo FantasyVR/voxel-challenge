@@ -13,12 +13,19 @@ to install the dependendies of the voxel renderer.
 Please fill in your code in `main.py` and include your result in this README.md file.
 
 ## Demo
-![](./demo.jpg)
+Taichi Logo
+![](./images/logo.jpg)
 
+Moebius Band
+![](./images/moebius.jpg)
 ## Quickstart
-
+* Taichi Logo
 ```sh
-python3 example1.py  # example2/3/4.py
+python3 logo.py
+```
+* Moebius Band
+```
+python3 moebius.py
 ```
 
 Mouse and keyboard interface:
