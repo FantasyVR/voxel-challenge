@@ -17,7 +17,7 @@ Taichi Logo
 ![](./images/logo.jpg)
 
 Moebius Band
-![](./images/moebius.jpg)
+![](./images/moebius1.jpg)
 ## Quickstart
 * Taichi Logo
 ```sh
