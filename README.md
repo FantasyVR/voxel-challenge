@@ -14,7 +14,7 @@ Please fill in your code in `main.py` and include your result in this README.md 
 
 ## Demo
 Taichi Logo
-![](./images/logo.jpg)
+![](./images/logo1.jpg)
 
 Moebius Band
 ![](./images/moebius1.jpg)
