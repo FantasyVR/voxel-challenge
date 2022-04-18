@@ -18,6 +18,10 @@ Taichi Logo
 
 Moebius Band
 ![](./images/moebius1.jpg)
+
+Beach
+![](./images/beach1.jpg)
+
 ## Quickstart
 * Taichi Logo
 ```sh
