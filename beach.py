@@ -2,7 +2,7 @@ from scene import Scene
 import taichi as ti
 from taichi.math import *
 
-scene = Scene(voxel_edges=0.01, exposure=2)
+scene = Scene(voxel_edges=0.0, exposure=2)
 scene.set_floor(-0.99, (1.0, 1.0, 1.0))
 scene.set_background_color((0.0, 0.0, 0.0))
 scene.set_direction_light((1, 1, 1), 0.1, (0.3, 0.6, 0.9))
@@ -18,7 +18,7 @@ def umbralla(pos, h, color1, color2):
     for i, j, k in ti.ndrange(len, h+1,len):
         scene.set_voxel(vec3(i,j,k) + pos, 1, vec3(1.0, 0.0, 0.0))
     for i, j, k in ti.ndrange((-r,r+1), (h-uh, h), (-r,r+1)):
-        if i**2 + k**2  - ((h-j)/uh) * r **2 < 1.0e-3:
+        if i**2 + k**2  - ((h-j)*1.2/uh) * r **2 < 1.0e-3:
             if j % 2 == 0:
                 scene.set_voxel(vec3(i, j, k) + pos, 1, color1)
             else:
@@ -74,23 +74,24 @@ def initialize_voxels():
     for i, j, k in ti.ndrange((-n, n), (-3, 0),(-n, n)):
         scene.set_voxel(vec3(i, j, k), 1, vec3(0.6, 0.4, 0.08))
     umbralla(vec3(-20,0,-30),30.0, vec3(1.0, 0.0, 0.0),vec3(1.0, 1.0, 1.0))
-    umbralla(vec3(20,0,-30), 25.0,vec3(0.0, 1.0, 0.0),vec3(0.5, 0.5, 0.5))
+    umbralla(vec3(20,0,-30), 25.0,vec3(1.0, 1.0, 1.0),vec3(0.0, 0.5, 0.0))
     chair(vec3(23,0,-27), 1)
-    chair(vec3(13,0,-32), 0)
-    chair(vec3(-18,0,-28), 0)
+    chair(vec3(12,0,-32), 0)
+    chair(vec3(-17,0,-28), 0)
     chair(vec3(-31,0,-31), 0)
     wave(vec3(0,0,0), -n, n, n-25 ,n)
-    human(vec3(-7,0,11), 7,vec3(0.97, 0.73,0.96), vec3(0.91,0.75, 0.67),vec3(0.67,0.94,0.95)) # mother
-    human(vec3(0,0,17), 5, vec3(0.96,0.42,0.60),vec3(0.91,0.59,0.48),vec3(0.70,0.96,0.58)) # child
-    human(vec3(10,0,10), 7, vec3(0.67,0.94, 0.95), vec3(0.71,0.71,0.71), vec3(0.71,0.71,0.71)) # father
+    human(vec3(-7,0,11), 7,vec3(0.97, 0.6,0.96), vec3(0.91,0.59,0.48),vec3(0.67,0.94,0.95)) # mother
+    human(vec3(0,0,19), 5, vec3(0.96,0.42,0.60),vec3(0.91,0.59,0.48),vec3(0.70,0.96,0.58)) # child
+    human(vec3(10,0,10), 7, vec3(0.67,0.94, 0.95), vec3(0.91, 0.588, 0.478), vec3(0.91, 0.588, 0.478)) # father
     table(vec3(-36,0,-20), 5, vec3(1.0,1.0,1.0))
+    table(vec3(35,0,-20), 5, vec3(1.0,1.0,1.0))
     v_step = 2 * pi / N
     for i, j in ti.ndrange(N, N):
         u, v= i * v_step, j * v_step
         x = (R + r * ti.cos(u)) * ti.cos(v)
         y = (R + r * ti.cos(u)) * ti.sin(v)
         z = r * ti.sin(u)
-        scene.set_voxel(vec3(x,z,y) + vec3(-20,1,46), 1, vec3(1.0, 0.0, 1.0))
+        scene.set_voxel(vec3(x,z,y) + vec3(-16,0,46), 1, vec3(1.0, 0.0, 1.0))
 initialize_voxels()
 
 scene.finish()

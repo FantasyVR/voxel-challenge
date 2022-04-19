@@ -21,6 +21,9 @@ Moebius Band
 
 Beach
 ![](./images/beach1.jpg)
+![](./images/beach2.jpg)
+![](./images/beach3.jpg)
+![](./images/beach4.jpg)
 
 ## Quickstart
 * Taichi Logo
